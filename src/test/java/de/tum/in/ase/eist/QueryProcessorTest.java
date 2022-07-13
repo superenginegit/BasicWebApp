@@ -53,4 +53,10 @@ class QueryProcessorTest {
 		String actualString = queryProcessor.process("is the largest: 10,3,5,8,1,9,5");
 		assertEquals("10", actualString);
 	}
+	
+	@Test
+	void testPrime() {
+		String actualString = queryProcessor.process("primes: 2,3,5,20,40");
+		assertEquals("2,3,5", actualString);
+	}
 }

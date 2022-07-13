@@ -1,6 +1,7 @@
 package de.tum.in.ase.eist;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,14 @@ public class QueryProcessor {
 	        		integers[i] = Integer.parseInt(splitStrings[i]);
 	        	}
 	        	return String.valueOf(Arrays.stream(integers).max().orElseThrow(IllegalArgumentException::new));
+	        } else if (query.contains("primes:")) {
+	        	String numbers = query.substring(query.indexOf(':')+2);
+	        	String[] splitStrings = numbers.split(",");
+	        	int[] integers = new int[splitStrings.length];
+	        	for (int i = 0; i < splitStrings.length; i++) {
+	        		integers[i] = Integer.parseInt(splitStrings[i]);
+	        	}
+	        	return String.valueOf(Arrays.stream(integers).filter(i -> isPrime(i)).mapToObj(i -> String.valueOf(i)).collect(Collectors.joining(",")));
 	        } else if (query.contains("multiplied")){
 	        	String[] splitupStrings = query.split(" ");
 	        	for (int i = 0; i < splitupStrings.length; i++) {
@@ -56,5 +65,16 @@ public class QueryProcessor {
         } catch (Exception e) {
 			return "";
 		}
+    }
+    
+    private boolean isPrime(int num) {
+        boolean flag = false;
+        for (int i = 2; i <= num / 2; ++i) {
+          if (num % i == 0) {
+            flag = true;
+            break;
+          }
+        }
+        return !flag;
     }
 }
