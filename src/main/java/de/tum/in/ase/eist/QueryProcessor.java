@@ -16,8 +16,10 @@ public class QueryProcessor {
 	                    "writer in the English language and the world's pre-eminent dramatist.";
 	        } else if (query.contains("name")) {
 	           return "Simon";
-	        } else if (query.contains("Eiffel tower")) {
+	        } else if (query.contains("eiffel tower")) {
 		           return "Paris";
+		    }else if (query.contains("theresa may") && query.contains("prime minister")) {
+		           return "2016";
 		    } else if (query.contains("plus")){
 	        	String[] splitupStrings = query.split(" ");
 	        	for (int i = 0; i < splitupStrings.length; i++) {
