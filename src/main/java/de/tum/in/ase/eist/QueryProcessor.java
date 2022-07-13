@@ -18,8 +18,10 @@ public class QueryProcessor {
 	           return "Simon";
 	        } else if (query.contains("eiffel tower")) {
 		           return "Paris";
-		    }else if (query.contains("theresa may") && query.contains("prime minister")) {
+		    } else if (query.contains("theresa may") && query.contains("prime minister")) {
 		           return "2016";
+		    } else if (query.contains("james bond") && query.contains("dr. no")) {
+		           return "Sean Connery";
 		    } else if (query.contains("plus")){
 	        	String[] splitupStrings = query.split(" ");
 	        	for (int i = 0; i < splitupStrings.length; i++) {
