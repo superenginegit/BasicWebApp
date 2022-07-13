@@ -34,7 +34,17 @@ public class QueryProcessor {
 	        		integers[i] = Integer.parseInt(splitStrings[i]);
 	        	}
 	        	return String.valueOf(Arrays.stream(integers).max().orElseThrow(IllegalArgumentException::new));
-	        } else {
+	        } else if (query.contains("multiplied")){
+	        	String[] splitupStrings = query.split(" ");
+	        	for (int i = 0; i < splitupStrings.length; i++) {
+	        		if (splitupStrings[i].equals("multiplied")) {
+        				Integer oneInteger = Integer.parseInt(splitupStrings[i-1]);
+        				Integer twoInteger = Integer.parseInt(splitupStrings[i+2]);
+        				return String.valueOf(oneInteger * twoInteger);
+	        		}
+	        	}
+	        	return "";
+	        }else {
 	            return "";
 	        }
         } catch (Exception e) {
