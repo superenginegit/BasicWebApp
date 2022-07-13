@@ -41,5 +41,10 @@ class QueryProcessorTest {
 		String actualString = queryProcessor.process("3 plus 7");
 		assertEquals("10", actualString);
 	}
-
+	
+	@Test
+	void testLargest() {
+		String actualString = queryProcessor.process("is the largest: 10,3,5,8,1,9,5");
+		assertEquals("10", actualString);
+	}
 }
