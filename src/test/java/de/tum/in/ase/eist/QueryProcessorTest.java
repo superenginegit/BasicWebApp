@@ -1,9 +1,9 @@
 package de.tum.in.ase.eist;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Test;
 
 class QueryProcessorTest {
 
@@ -20,6 +20,12 @@ class QueryProcessorTest {
 		if (!actual.contains("playwright")) {
 			fail("The QueryProcessor does not know about Shakespeare.");
 		}
+	}
+	
+	@Test
+	void testWhatIsYourName() {
+		String actualString = queryProcessor.process("what is your name");
+		assertEquals("Simon", actualString);
 	}
 
 	@Test
